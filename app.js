@@ -16,7 +16,7 @@ require('dotenv').config(); // подключаем чтение из файла
 const app = express();
 const PORT = 3000;
 
-
+//
 
 // Сообщаем express, что в качестве шаблонизатора используется "hbs".
 app.set('view engine', 'hbs');
