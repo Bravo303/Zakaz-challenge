@@ -16,6 +16,8 @@ exports.isValid = (req, res, next) => {
 
 exports.createUserAndSession = async (req, res, next) => {
   const { valueName, valuePass, valueEmail } = req.body;
+  const userCheck = await User.findOne({ where: { email: valueEmail }, raw: true });
+  if (userCheck) return res.json({ authorised: false });
   console.log('req.body: ', req.body);
   try {
     // Мы не храним пароль в БД, только его хэш
@@ -72,9 +74,9 @@ exports.destroySession = (req, res, next) => {
   });
 };
 
-exports.renderSignInForm = (req, res) => res.render('logform', { isSignin: true });
+exports.renderSignInForm = (req, res) => res.render('logForm', { isSignin: true });
 
-exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true });
+exports.renderSignUpForm = (req, res) => res.render('regForm', { isSignup: true });
 
 /**
  * Завершает запрос с ошибкой аутентификации

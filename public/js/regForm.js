@@ -15,13 +15,18 @@ regForm?.addEventListener('submit', async (event) => {
     body: JSON.stringify({ valueEmail, valueName, valuePass }),
   // console.log(regForm, "проверка рег формы");
   });
-  // const data = await res.json(); // Прилетает ответ с сервера и распаршеваем в ДЖСОН ска
+  const data = await res.json();
+  if (data.authorised === false) {
+    alert('Вы уже зарегистрированы'), 
+    window.location = '/logForm';
+  }// Прилетает ответ с сервера и распаршеваем в ДЖСОН ска
   // console.log(typeof (res.status));
   // console.log(res, "проверяет ");
+
   if (res.status === 200) {
-    alert('все ок');
+    window.location = '/';
   } else {
-    alert('нет авторизации');
+    alert('Вы не авторизованы!!!');
   }
   // console.log(data, 'проверка даты');
 });
