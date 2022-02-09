@@ -30,11 +30,14 @@ margin-top: 200px;
   align-items: center;
 }
 
+/* Dimka */
+
 #contacts {
-  font-family: Roboto;
+  font-family: 'Pangolin', cursive;
+  /* font-family: Roboto; */
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 19px;
   text-align: right;
   color: #000000;
@@ -70,11 +73,13 @@ hr {
   margin-left:15px;
 }
 
+/* Dimka */
 h2 {
 margin-bottom: -10px;
 margin-left:15px;
-font-family: Poppins;
-font-style: normal;
+font-family: 'Pangolin', cursive;
+/* font-family: Poppins;
+font-style: normal; */
 font-weight: 600;
 font-size: 30px;
 line-height: 30px;
@@ -82,10 +87,13 @@ line-height: 30px;
 
 text-align: center;
 }
+
+/* Dimka */
 .deviz {
   margin-top: -25px;
   margin-left:25px;
-  font-family: Poppins;
+  font-family: 'Pangolin', cursive;
+  /* font-family: Poppins; */
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -147,7 +155,8 @@ color: #000000;
   background-color: white;
   border: 2px solid black;
   border-radius: 20px;
-  margin-top: 500px;
+  margin-top: 300px;
+
 }
 
 /* Full-width input fields */
@@ -201,10 +210,19 @@ a {
 }
 
 
-#regForm, #logForm {
+
+/* Это больше не работает! */
+/* #regForm, #logForm {
   color:black;
   width: 50%;
   margin-left: 25%;
+} */
+
+/* Dimka */
+div [name="logForm"], div [name="regForm"] {
+  width: 30%;
+  position: absolute;
+  margin-left: 35%;
 }
 
 #formTitle {
@@ -213,3 +231,33 @@ a {
 a{
   text-decoration: none;
 }
+
+/* Dimka */
+a.menu {
+font-family: 'Pangolin', cursive;
+font-size: 25px;
+position: relative;
+color: black;
+cursor: pointer;
+line-height: 1; 
+text-decoration: none; 
+}
+a.menu:after {
+display: block;
+position: absolute;
+left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+width: 0;/*задаём длинну линии до наведения курсора*/
+height: 3px; /*задаём ширину линии*/
+background-color: red; /*задаём цвет линии*/
+content: "";
+transition: width 0.9s ease-out; /*задаём время анимации*/
+}
+
+a.menu:hover:after,
+a.menu:focus:after {
+width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+
+
+
+
