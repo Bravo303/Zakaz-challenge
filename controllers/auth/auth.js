@@ -8,7 +8,7 @@ function failAuth(res, err) {
 }
 
 exports.isValid = (req, res, next) => {
-  console.log(req.body, 'приходит reg body');
+  console.log(req.body, 'приходит req body');
   const { valueName, valuePass, valueEmail } = req.body;
   if (valueName && valuePass && valueEmail) next();
   else res.status(401).end();
@@ -18,7 +18,7 @@ exports.createUserAndSession = async (req, res, next) => {
   const { valueName, valuePass, valueEmail } = req.body;
   const userCheck = await User.findOne({ where: { email: valueEmail }, raw: true });
   if (userCheck) return res.json({ authorised: false });
-  console.log('req.body: ', req.body);
+
   try {
     // Мы не храним пароль в БД, только его хэш
     const saltRounds = 10;
@@ -35,35 +35,41 @@ exports.createUserAndSession = async (req, res, next) => {
     // записываем в req.session.user данные (id & name) (создаем сессию)
     req.session.user = { id: user.id, email: user.email }; // req.session.user -> id, name
     // res.json({ 1: 1 });
-    res.status(200).end();
+    res.json({ authorised: true });
     console.log(req.session.user, 'local user session');
   } catch (err) {
     console.error('Err message:', err.message);
     console.error('Err code', err.code);
     // return failAuth(res, err.message);
-    res.status(401).end();
+    res.json({ authorised: false });
   }
   // ответ 200+автоматическое создание и отправка cookies в заголовке клиенту
 };
 
 exports.checkUserAndCreateSession = async (req, res, next) => {
-  const { name, password } = req.body;
-  try {
-    // Пытаемся сначала найти пользователя в БД
-    const user = await User.findOne({ where: { name }, raw: true });
-    if (!user) return failAuth(res, ' Неправильное имя/пароль');
+  const { userEmail, password } = req.body;
+  console.log(req.body);
 
-    // Сравниваем хэш в БД с хэшем введённого пароля
-    const isValidPassword = await bcrypt.compare(password, user.password);
-    if (!isValidPassword) return failAuth(res, ' Неправильное имя\\пароль');
+  // Пытаемся сначала найти пользователя в БД
+  const user = await User.findOne({ where: { email: userEmail }, raw: true });
+  console.log(user)
+  if (!user) return res.json({ authorised: false });
 
-    req.session.user = { id: user.id, name: user.name }; // записываем в req.session.user данные (id & name) (создаем сессию)
-  } catch (err) {
-    console.error('Err message:', err.message);
-    console.error('Err code', err.code);
-    return failAuth(res, err.message);
+  if (user) {
+    try {
+      // Сравниваем хэш в БД с хэшем введённого пароля
+      const isValidPassword = await bcrypt.compare(password, user.password);
+      if (!isValidPassword) return failAuth(res, ' Неправильное имя\\пароль');
+
+      req.session.user = { id: user.id, name: user.name }; // записываем в req.session.user данные (id & name) (создаем сессию)
+    } catch (err) {
+      console.error('Err message:', err.message);
+      console.error('Err code', err.code);
+      // return failAuth(res, err.message);
+    }
   }
-  res.status(200).end(); // ответ 200 + автоматическое создание и отправка cookies в заголовке клиенту
+
+  // res.status(200).end(); // ответ 200 + автоматическое создание и отправка cookies в заголовке клиенту
 };
 
 exports.destroySession = (req, res, next) => {
@@ -74,9 +80,9 @@ exports.destroySession = (req, res, next) => {
   });
 };
 
-exports.renderSignInForm = (req, res) => res.render('logForm', { isSignin: true });
+exports.renderSignInForm = (req, res) => res.render('logform', { isSignin: true });
 
-exports.renderSignUpForm = (req, res) => res.render('regForm', { isSignup: true });
+exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true });
 
 /**
  * Завершает запрос с ошибкой аутентификации

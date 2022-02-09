@@ -1,5 +1,6 @@
-const regForm = document.getElementById('regForm');
-regForm?.addEventListener('submit', async (event) => {
+const regForms2 = document.forms.regForm;
+
+regForms2?.addEventListener('submit', async (event) => {
   event.preventDefault();
   const inputEmail = document.getElementById('regEmail');
   const inputName = document.getElementById('regName');
@@ -17,16 +18,10 @@ regForm?.addEventListener('submit', async (event) => {
   });
   const data = await res.json();
   if (data.authorised === false) {
-    alert('Вы уже зарегистрированы'), 
+    console.log('Вы уже зарегистрированы');
+    // alert('Вы уже зарегистрированы');
     window.location = '/logForm';
-  }// Прилетает ответ с сервера и распаршеваем в ДЖСОН ска
+  } else window.location = '/';
   // console.log(typeof (res.status));
   // console.log(res, "проверяет ");
-
-  if (res.status === 200) {
-    window.location = '/';
-  } else {
-    alert('Вы не авторизованы!!!');
-  }
-  // console.log(data, 'проверка даты');
 });
