@@ -6,9 +6,10 @@ const path = require('path');
 require('dotenv').config(); // подключаем чтение из файла .env + npm i dotenv  *** Dimka ***
 // const dbConCheck = require('./db/dbConCheck.js') // Проверка коннекта с БД *** Dimka ***
 
-// const redis = require('redis');
-// let RedisStore = require('connect-redis')(session);
-// let redisClient = redis.createClient();
+const redis = require('redis');
+const RedisStore = require('connect-redis')(session);
+
+const redisClient = redis.createClient();
 
 const app = express();
 const PORT = 3000;
@@ -18,6 +19,28 @@ const indexRouter = require('./routes');
 app.set('view engine', 'hbs');
 // Сообщаем express, что шаблона шаблонизаторая (вью) находятся в папке "ПапкаПроекта/views".
 app.set('views', path.join(__dirname, 'views'));
+
+const sessionConfig = { // Скопировал из лекции Ромы *** Dimka ***
+  name: 'sid', // название куки
+  store: new RedisStore({ client: redisClient }), // подключаем БД для храненя куков
+  secret: process.env.COOKIE_SECRET, // ключ для шифрования cookies // require('crypto').randomBytes(10).toString('hex')
+  resave: false, // Если true,  пересохраняет сессию, даже если она не поменялась
+  saveUninitialized: false, // Если false, куки появляются только при установке req.session
+  cookie: {
+    secure: process.env.NODE_ENV === 'production', // В продакшне нужно "secure: true" для работы через протокол HTTPS
+    maxAge: 1000 * 60 * 60 * 24 * 10, // время жизни cookies, ms (10 дней)
+  },
+};
+app.use(session(sessionConfig)); // req.session.user = {name: '....'}*** Dimka ***
+
+//  сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
+// app.use((req, res, next) => {
+//   res.locals.useremail = req.session?.email?.email; //* ** Dimka ***
+
+//   console.log('\n\x1b[33m', 'req.session.email.email:', req.session.email.email); //* ** Dimka ***
+//   console.log('\x1b[35m', 'res.locals.useremail:', res.locals.useremail); //* ** Dimka ***
+//   next();
+// });
 
 // Подключаем middleware morgan с режимом логирования "dev", чтобы для каждого HTTP-запроса на сервер в консоль выводилась информация об этом запросе.
 app.use(logger('dev'));
