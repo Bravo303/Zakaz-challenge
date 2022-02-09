@@ -7,15 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
   <script defer src="/js/application.js"></script>
-  {{!-- {{#if isSignin}} --}}
+  {{#if isSignin}}
   <script defer src='/js/logForm.js'></script>
-  {{!-- {{/if}}
-  {{#if isSignup}} --}}
+   {{/if}}
+  {{#if isSignup}} 
   <script defer src='/js/regForm.js'></script>
-  {{!-- {{/if}} --}}
+  {{/if}}
   <title>We are Socks</title>
 </head>
-<div id="shapka">
+
+
+<body>
+  <div id="shapka">
 
   <div id="logo">
     <a href="/"><img class="logo" src="image/logo.png" width="192" height="218" class="center block"></a>
@@ -31,13 +34,14 @@
   <div id="menu">
     <p class="headermenu">Каталог</p>
     <p class="headermenu">Конструктор</p>
-    <p class="headermenu">Войти</p>
-    <p class="headermenu">Зарегистрироваться</p>
+    <p class="headermenu"><a ></a>Выйти</p>
+    
   {{else}}
     <div id="menu">
     <p class="headermenu">Каталог</p>
     <p class="headermenu">Конструктор</p>
-    <p class="headermenu">Выйти</p>
+    <p class="headermenu"><a href="/logForm">Войти</a></p>
+    <p class="headermenu"><a href="/regForm">Зарегистрироваться</a></p>
     {{/if}}
 
   </div>
@@ -53,10 +57,13 @@
 
 </div>
 </div>
-
-<body>
+<div>
   {{{body}}}
-  <div id="footer">
+</div>
+  
+  
+
+<div id="footer">
     <div id="footercolumns">
       <div id="footermenu">
         <ul>
@@ -67,9 +74,9 @@
         </ul>
       </div>
       <div id="socials">
-        <a href="/"><img class="socials" src="/image/insta.png" width="100" height="100" class="center block"></a>
-        <a href="/"><img class="socials" src="/image/twitter.png" width="100" height="100" class="center block"></a>
-        <a href="/"><img class="socials" src="/image/youtube.png" width="100" height="100" class="center block"></a>
+        <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="100" height="100" class="center block"></a>
+        <a href="https://www.twitter.com"><img class="socials" src="/image/twitter.png" width="100" height="100" class="center block"></a>
+        <a href="https://www.youtube.com/channel/UCaKZxz2d1KI-wN3l6fX7zdQ/featured "><img class="socials" src="/image/youtube.png" width="100" height="100" class="center block"></a>
       </div>
       <div id="footeradress">
         <p>+7 (499) 938-68-24 <br>
@@ -82,6 +89,5 @@
       <p>Политика конфедициальности</p>
     </div>
   </div>
-</body>
-
+  </body>
 </html>

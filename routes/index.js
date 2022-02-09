@@ -1,7 +1,6 @@
 const express = require('express');
-//const router = require('express').Router();
+// const router = require('express').Router();
 const router = express.Router();
-
 
 const {
   checkUserAndCreateSession,
@@ -12,8 +11,8 @@ const {
 } = require('../controllers/auth/auth.js');
 
 router.get('/', (req, res) => {
-  res.render('layout.hbs')
-})
+  res.render('index');
+});
 
 router
   .route('/regForm')
