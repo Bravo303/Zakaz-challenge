@@ -1,0 +1,32 @@
+/* .favContainer {
+  position: absolute;
+  width: 1150px;
+  height: 586px;
+  left: 145px;
+  top: 177px;
+} */
+
+.favSmallContainer {
+  position: absolute;
+  width: 991px;
+  height: 518px;
+  left: 224px;
+  top: 245px;
+  background: #C6D6D3;
+  border-radius: 90px;
+  }
+
+  .favTitle {
+  position: absolute;
+  width: 208px;
+  height: 30px;
+  left: 224px;
+  top: 177px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+  }

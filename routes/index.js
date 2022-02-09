@@ -13,6 +13,9 @@ const {
 router.get('/', (req, res) => {
   res.render('index');
 });
+router.get('/fav', (req, res) => {
+  res.render('fav'); //создала временную ручку, чтобы сделать hbs и стили
+});
 
 router
   .route('/regForm')
