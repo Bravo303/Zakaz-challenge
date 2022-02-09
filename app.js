@@ -1,22 +1,18 @@
 const express = require('express');
 const createError = require('http-errors');
-const session = require('express-session') // подключаем библиотеку + установка npm i express-session *** Dimka ***
+const session = require('express-session'); // подключаем библиотеку + установка npm i express-session *** Dimka ***
 const logger = require('morgan');
 const path = require('path');
 require('dotenv').config(); // подключаем чтение из файла .env + npm i dotenv  *** Dimka ***
-//const dbConCheck = require('./db/dbConCheck.js') // Проверка коннекта с БД *** Dimka ***
+// const dbConCheck = require('./db/dbConCheck.js') // Проверка коннекта с БД *** Dimka ***
 
-
-//const redis = require('redis');
+// const redis = require('redis');
 // let RedisStore = require('connect-redis')(session);
 // let redisClient = redis.createClient();
 
-
-
 const app = express();
 const PORT = 3000;
-
-//
+const indexRouter = require('./routes');
 
 // Сообщаем express, что в качестве шаблонизатора используется "hbs".
 app.set('view engine', 'hbs');
@@ -32,11 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 // Подключаем middleware, которое позволяет читать переменные JavaScript, сохранённые в формате JSON в body HTTP-запроса.
 app.use(express.json());
 
-
 app.use('/', indexRouter);
-
-
 
 app.listen(PORT, () => {
   console.log(`>>> Server Started at PORT: ${PORT} ...(+)`);
-})
+});
