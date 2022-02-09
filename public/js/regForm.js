@@ -7,7 +7,7 @@ regForm?.addEventListener('submit', async (event) => {
   const valueEmail = inputEmail.value;
   const valueName = inputName.value;
   const valuePass = inputPass.value;
-  const res = fetch('/regForm', {
+  const res = await fetch('/regForm', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,5 +15,13 @@ regForm?.addEventListener('submit', async (event) => {
     body: JSON.stringify({ valueEmail, valueName, valuePass }),
   // console.log(regForm, "проверка рег формы");
   });
-  const data = await res.json(); // Прилетает ответ с сервера и распаршеваем в ДЖСОН ска
+  // const data = await res.json(); // Прилетает ответ с сервера и распаршеваем в ДЖСОН ска
+  // console.log(typeof (res.status));
+  // console.log(res, "проверяет ");
+  if (res.status === 200) {
+    alert('все ок');
+  } else {
+    alert('нет авторизации');
+  }
+  // console.log(data, 'проверка даты');
 });
