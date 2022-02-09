@@ -1,4 +1,7 @@
 const express = require('express');
+//const router = require('express').Router();
+const router = express.Router();
+
 
 const {
   checkUserAndCreateSession,
@@ -6,9 +9,11 @@ const {
   isValid,
   renderSignInForm,
   renderSignUpForm,
-} = require('../controllers/auth');
+} = require('../controllers/auth/auth.js');
 
-const router = express.Router();
+router.get('/', (req, res) => {
+  res.render('layout.hbs')
+})
 
 router
   .route('/signup')
