@@ -4,7 +4,8 @@ const {
 } = require('../../db/models');
 
 exports.isValid = (req, res, next) => {
-  const { name, password, email } = req.body;
+  console.log(req.body, 'приходит reg body');
+  const { valueName, valuePass, valueEmail } = req.body;
   if (name && password && email) next();
   else res.status(401).end();
 };
@@ -61,9 +62,9 @@ exports.destroySession = (req, res, next) => {
   });
 };
 
-exports.renderSignInForm = (req, res) => res.render('signin', { isSignin: true });
+exports.renderSignInForm = (req, res) => res.render('logform', { isSignin: true });
 
-exports.renderSignUpForm = (req, res) => res.render('signup', { isSignup: true });
+exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true });
 
 /**
  * Завершает запрос с ошибкой аутентификации

@@ -1,0 +1,26 @@
+<form id="regForm" method="POST" action="/auth/regForm">
+  <div class="container">
+    <h1 id=formTitle>Регистрация нового пользователя</h1>
+    <p>Пожалуйста заполните форму что бы создать новый аккаунт</p>
+    <hr>
+
+    <label for="email"><b>Ваш Email</b></label>
+    <input id= "regEmail" type="text" placeholder="Enter Email" name="email" required
+      pattern="^[A-Z0-9a-z._%+-]+@[A-Z0-9a-z.-]+\.[A-Za-z]{2,}$">
+
+
+    <label for="username"><b>Ваш Ник</b></label>
+    <input id= "regName" type="text" placeholder="Enter Username" name="username" required <label for="psw"><b>Придумайте
+      Пароль</b></label>
+    <input id= "regPass" type="password" placeholder="Enter Password" name="password" required>
+
+    <hr>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+    <button type="submit" class="registerbtn">Регистрация</button>
+  </div>
+
+  <div class="container signin">
+    <p>Уже есть аккаунт? <a href="/auth/logForm">Войти!</a></p>
+  </div>
+</form>

@@ -16,14 +16,14 @@ router.get('/', (req, res) => {
 })
 
 router
-  .route('/signup')
+  .route('/regForm')
   // Страница регистрации пользователя
   .get(renderSignUpForm)
   // Регистрация пользователя
   .post(isValid, createUserAndSession);
 
 router
-  .route('/signin')
+  .route('/logForm')
   // Страница аутентификации пользователя
   .get(renderSignInForm)
   // Аутентификация пользователя

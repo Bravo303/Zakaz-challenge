@@ -6,6 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
+  <script defer src="/js/application.js"></script>
+  {{#if isSignin}}
+  <script defer src='/js/logForm.js'></script>
+  {{/if}}
+  {{#if isSignup}}
+  <script defer src='/js/regForm.js'></script>
+  {{/if}}
   <title>We are Socks</title>
 </head>
 <div id="shapka">
@@ -20,11 +27,18 @@
       </div>
     </div>
   </div>
+  {{#if email}}
   <div id="menu">
     <p class="headermenu">Каталог</p>
     <p class="headermenu">Конструктор</p>
     <p class="headermenu">Войти</p>
     <p class="headermenu">Зарегистрироваться</p>
+  {{else}}
+    <div id="menu">
+    <p class="headermenu">Каталог</p>
+    <p class="headermenu">Конструктор</p>
+    <p class="headermenu">Выйти</p>
+    {{/if}}
 
   </div>
   <div id="contacts">
