@@ -67,6 +67,18 @@ margin-top: 200px;
   
 }
 
+#greetingName {
+  font-family: 'Pangolin', cursive;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 27px;
+  font-size: 25px;
+    position: relative;
+    color: rgb(129, 170, 129);
+    cursor: pointer;
+    line-height: 1;
+}
+
 hr {
   border: none; /* Убираем границу */
   background-color: red; /* Цвет линии */
