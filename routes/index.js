@@ -15,17 +15,21 @@ const {
 router.get('/', (req, res) => {
   res.render('index');
 });
-router.post('/fav', async (req, res) => {
-  const emailId = res.locals.useremail.id;
-  const favLink = req.body.link;
-  const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
-  if (!povtor) {
-    const favSock = await Favorites.create({
-      user_id: emailId,
-      favorites_link: favLink,
-    });
-  } else res.status(200).end();
+// router.post('/fav', async (req, res) => {
+//   const emailId = res.locals.useremail.id;
+//   const favLink = req.body.link;
+//   const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
+//   if (!povtor) {
+//     const favSock = await Favorites.create({
+//       user_id: emailId,
+//       favorites_link: favLink,
+//     });
+//   } else res.status(200).end();
+// });
+router.get('/fav', (req, res) => {
+  res.render('fav');
 });
+
 router
   .route('/generator')
   .get(renderGenerator);

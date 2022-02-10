@@ -1,10 +1,6 @@
-/* *{
-  margin: 0;
-  padding: 0;
-} */
 #shapka {
-/* position: fixed; /* поставила пока тут абсолют, фикс закрепляет на экране, но картинка наежает на него
-завтра хочу спросить у Ромы, в гугле не нашла ответ */ 
+position: fixed; /* поставила пока тут абсолют, фикс закрепляет на экране, но картинка наежает на него
+завтра хочу спросить у Ромы, в гугле не нашла ответ */
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -13,10 +9,12 @@ height: 108px;
 left: 0px;
 top: 0px;
 background: #FEDBBA;
-color: black
-
+color: black;
+z-index: 1;
 }
-
+/* main {
+  z-index: -1;
+} */
 #footer {
 position: absolute;
 width: 100%;
@@ -67,6 +65,18 @@ margin-top: 200px;
 .company {
   display:flex;
   
+}
+
+#greetingName {
+  font-family: 'Pangolin', cursive;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 27px;
+  font-size: 25px;
+    position: relative;
+    color: rgb(129, 170, 129);
+    cursor: pointer;
+    line-height: 1;
 }
 
 hr {
