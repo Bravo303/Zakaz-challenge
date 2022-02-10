@@ -45,14 +45,13 @@ for (let i = 0; i < btn1.length; i++) { // циклом перебираем в�
     }
   });
 }
-if (white) {
-  reset.addEventListener('click', (e) => {
-    e.preventDefault();
-    img.remove();
-    delete1.remove();
-    white.setAttribute('src', 'image/Socks/white.png');// задаём атрибутты
-    white.setAttribute('class', 'bigImg');
-    white.setAttribute('id', 'reset');
-    bigDiv.appendChild(white);
-  });
-}
+
+reset?.addEventListener('click', (e) => {
+  e.preventDefault();
+  img.remove();
+  delete1.remove();
+  white.setAttribute('src', 'image/Socks/white.png');// задаём атрибутты
+  white.setAttribute('class', 'bigImg');
+  white.setAttribute('id', 'reset');
+  bigDiv.appendChild(white);
+});

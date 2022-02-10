@@ -4,17 +4,15 @@
   </div>
   <div class="favSmallContainer">
     <div class="favTable">
-      <table>
-        <tr>
-          <td>Номер</td>
-          <td>Фото</td>
-          <td>Описание</td>
+      <table >
+        {{#each fav}}
+        <tr class='flextable'>
+          <td> {{this.id}}Номер</td>
+          <td><img class="small" src='image/Socks/{{this.favorites_link}}'>Фото</td>
+          <td>{{this.id}}Описание</td>
         </tr>
-        <tr>
-          <td>Номер</td>
-          <td>Фото</td>
-          <td>Описание</td>
-        </tr>
+        {{/each}}
+        
       </table>
       <div class="favBtnContainer">
         <div class="">
