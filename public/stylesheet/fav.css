@@ -8,6 +8,9 @@
 
 .favSmallContainer {
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;  
   width: 991px;
   height: 518px;
   left: 224px;
@@ -29,4 +32,32 @@
   line-height: 30px;
   text-align: center;
   color: #000000;
+  }
+
+  .favBtnContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+    
+  }
+
+  .table {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 15px solid #ffffff;
+    border-top: 5px solid #F2F8F8;
+    border-collapse: collapse; 
+  }
+  .table th {
+    font-weight: bold;
+    padding: 5px;
+    background: #F2F8F8;
+    border: none;
+    border-bottom: 5px solid #F2F8F8;
+  }
+  .table td {
+    padding: 5px;
+    border: none;
+    border-bottom: 5px solid #F2F8F8;
   }
