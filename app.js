@@ -33,12 +33,13 @@ const sessionConfig = { // Скопировал из лекции Ромы *** D
 };
 app.use(session(sessionConfig)); // req.session.user = {name: '....'}*** Dimka ***
 
- //сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
+// сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
 app.use((req, res, next) => {
-  res.locals.useremail = req.session?.email; //* ** Dimka ***
-
-  console.log('\n\x1b[33m', 'req.session.email.email:', req.session.email); //* ** Dimka ***
-  console.log('\x1b[35m', 'res.locals.useremail:', res.locals.useremail); //* ** Dimka ***
+  res.locals.useremail = req.session.email; //* ** Dimka ***
+  // res.locals.username = req.session.username;
+  // console.log(req.session.username);
+  // console.log('\n\x1b[33m', 'req.session.email.email:', req.session.email); //* ** Dimka ***
+  // console.log('\x1b[35m', 'res.locals.useremail:', res.locals.useremail); //* ** Dimka ***
   next();
 });
 

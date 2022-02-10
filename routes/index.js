@@ -9,6 +9,7 @@ const {
   renderSignInForm,
   renderSignUpForm,
   renderGenerator,
+  renderFav,
 } = require('../controllers/auth/auth.js');
 
 router.get('/', (req, res) => {
@@ -17,7 +18,9 @@ router.get('/', (req, res) => {
 router
   .route('/generator')
   .get(renderGenerator);
-
+router
+  .route('/favorites')
+  .get(renderFav);
 router
   .route('/regForm')
   // Страница регистрации пользователя

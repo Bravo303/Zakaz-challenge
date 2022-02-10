@@ -33,7 +33,7 @@ exports.createUserAndSession = async (req, res, next) => {
     console.log(user, 'проверяем юзера');
 
     // записываем в req.session.user данные (id & name) (создаем сессию)
-    req.session.email = { id: user.id, email: user.email }; // req.session.user -> id, name
+    req.session.email = { id: user.id, email: user.email, username: user.name }; // req.session.user -> id, name
     // res.json({ 1: 1 });
     res.json({ authorised: true });
     console.log(req.session.user, 'local user session');
@@ -60,13 +60,15 @@ exports.checkUserAndCreateSession = async (req, res, next) => {
     try {
       // Сравниваем хэш в БД с хэшем введённого пароля
       const isValidPassword = await bcrypt.compare(password, user.password);
-      console.log(isValidPassword);
+      console.log(user);
       if (!isValidPassword) {
         return failAuth(res, ' Неправильное имя\\пароль');
       }
 
-      req.session.email = { id: user.id, email: user.email }; // записываем в req.session.user данные (id
+      req.session.email = { id: user.id, email: user.email, username: user.name }; // записываем в req.session.user данные (id
+      console.log(req.session.email);
       res.json({ authorised: true });
+
       // & name) (создаем сессию)
       // res.status(200).end();
     } catch (err) {
@@ -92,6 +94,8 @@ exports.renderSignInForm = (req, res) => res.render('logform', { isSignin: true 
 exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true });
 
 exports.renderGenerator = (req, res) => res.render('generator');
+
+exports.renderFav = (req, res) => res.render('fav');
 
 /**
  * Завершает запрос с ошибкой аутентификации

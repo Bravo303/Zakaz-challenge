@@ -6,7 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
-  <link rel="stylesheet" href="stylesheet/img.css">
+   <link rel="stylesheet" href="stylesheet/img.css">
+  <link rel="stylesheet" href="stylesheet/index.css">
+  <link rel="stylesheet" href="stylesheet/fav.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+  </style>
   <script defer src="/js/application.js"></script>
   <script defer type='text/javascript' src='stylesheet/bower_components/tinycolor/tinycolor.js'></script>
    
@@ -17,56 +25,63 @@
   <script defer src='/js/regForm.js'></script>
   {{!-- {{/if}} --}}
   <title>We are Socks</title>
+  <style>
+    li {
+      list-style-type: none;
+      /* Убираем маркеры */
+    }
+  </style>
 </head>
 
 
 <body>
   <div id="shapka">
 
-  <div id="logo">
-    <a href="/"><img class="logo" src="image/logo.png" width="192" height="218" class="center block"></a>
-    <div class="company">
-      <div id="comapanyname">
-        <h2>We are Socks</h2>
-        <hr>
-        <p class="deviz">Носки - это к нам!</p>
+    <div id="logo">
+      <a href="/"><img class="logo" src="image/logo.png" width="102" height="108" class="center block"></a>
+      <div class="company">
+        <div id="comapanyname">
+          <h2>We are Socks</h2>
+          <hr>
+          <p class="deviz">Носки - это к нам!</p>
+        </div>
       </div>
     </div>
-  </div>
-  {{#if useremail}}
-  <div id="menu">
-    <p class="headermenu">Каталог</p>
-    <p class="headermenu"><a href="/generator">Конструктор</a></p>
-    <p class="headermenu"><a href="/signout" >Выйти</a></p>
-    {{else}}
-    <p class="headermenu">Каталог</p>
-    <p class="headermenu"><a href="/generator">Конструктор</a></p>
-    <p class="headermenu"><a href="/logForm">Войти</a></p>
-    <p class="headermenu"><a href="/regForm">Зарегистрироваться</a></p>
-    {{/if}}
-
-  
+    {{#if useremail}}
     <div id="menu">
+      <p class="headermenu"><a class="menu" href="/">Каталог</a></p>
+      <p class="headermenu"><a class="menu" href="/generator">Конструктор</a></p>
+      <p class="headermenu"><a class="menu" href="/signout">Выйти</a></p>
+      <p class="headermenu"><a>Привет, {{useremail.username}}</a></p>
+
+      {{else}}
+      <div id="menu">
+        <p class="headermenu"><a class="menu" href="/">Каталог</a></p>
+        <p class="headermenu"><a class="menu" href="/">Конструктор</a></p>
+        <p class="headermenu"><a class="menu" href="/logForm">Войти</a></p>
+        <p class="headermenu"><a class="menu" href="/regForm">Зарегистрироваться</a></p>
+        {{/if}}
+
+      </div>
+      <div id="contacts">
+        <p>info@elbrusboot.camp <br>
+          +7 (499) 938-68-24
+        </p>
+      </div>
+      <div id="likebasket">
+        <a href="/favorites"><img class="like" src="/image/like.png" width="70" height="62" class="center block"></a>
+        <a href="/basket"><img class="basket" src="/image/basket.png" width="70" height="62" class="center block"></a>
+      </div>
+
+    </div>
   </div>
-  <div id="contacts">
-    <p>info@elbrusboot.camp <br>
-      +7 (499) 938-68-24
-    </p>
-  </div>
-  <div id="likebasket">
-    <a href="/like"><img class="like" src="/image/like.png" width="100" height="100" class="center block"></a>
-    <a href="/basket"><img class="basket" src="/image/basket.png" width="100" height="100" class="center block"></a>
+  <div>
+    {{{body}}}
   </div>
 
-</div>
-</div>
-<div>
-  {{{body}}}
-</div>
-  
-  
 
-<div id="footer">
+
+  <div id="footer">
     <div id="footercolumns">
       <div id="footermenu">
         <ul>
@@ -77,9 +92,12 @@
         </ul>
       </div>
       <div id="socials">
-        <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="100" height="100" class="center block"></a>
-        <a href="https://www.twitter.com"><img class="socials" src="/image/twitter.png" width="100" height="100" class="center block"></a>
-        <a href="https://www.youtube.com/channel/UCaKZxz2d1KI-wN3l6fX7zdQ/featured "><img class="socials" src="/image/youtube.png" width="100" height="100" class="center block"></a>
+        <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="50"
+            height="50" class="center block"></a>
+        <a href="https://www.twitter.com"><img class="socials" src="/image/twitter.png" width="50" height="50"
+            class="center block"></a>
+        <a href="https://www.youtube.com/channel/UCaKZxz2d1KI-wN3l6fX7zdQ/featured "><img class="socials"
+            src="/image/youtube.png" width="50" height="50" class="center block"></a>
       </div>
       <div id="footeradress">
         <p>+7 (499) 938-68-24 <br>
@@ -88,9 +106,10 @@
       </div>
     </div>
     <div id="policy">
-      <p>Все права защищены (с)</p>
-      <p>Политика конфедициальности</p>
+      <p>© 2022 All rights reserved. We Are Socks</p>
+      <p>By using this site you agree to the privacy policy</p>
     </div>
   </div>
-  </body>
+</body>
+
 </html>
