@@ -95,7 +95,12 @@ exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true 
 
 exports.renderGenerator = (req, res) => res.render('generator');
 
-exports.renderFav = (req, res) => res.render('fav');
+exports.renderFav = async (req, res) => {
+  const a = req.session.email.id;
+  const fav = await Favorites.findAll({ where: { user_id: a }, raw: true });
+  console.log(fav);
+  res.render('fav', { fav });
+};
 
 /**
  * Завершает запрос с ошибкой аутентификации
