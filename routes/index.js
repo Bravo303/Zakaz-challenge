@@ -8,11 +8,15 @@ const {
   isValid,
   renderSignInForm,
   renderSignUpForm,
+  renderGenerator,
 } = require('../controllers/auth/auth.js');
 
 router.get('/', (req, res) => {
   res.render('index');
 });
+router
+  .route('/generator')
+  .get(renderGenerator);
 
 router
   .route('/regForm')

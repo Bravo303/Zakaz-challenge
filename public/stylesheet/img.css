@@ -1,0 +1,23 @@
+.img2{
+  position: absolute;
+  width:100px;
+  height:100px ;
+  top: 10px;
+  right: -10px;
+  
+}
+.img1{
+  position: relative;
+  width:100px;
+  height:100px ;
+  margin-top: 150px;
+  margin-left: 250px;
+}
+#btn{
+  margin-top: 350px;
+  
+}
+.div{
+  margin-top: 50px;
+ 
+}

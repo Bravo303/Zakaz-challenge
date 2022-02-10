@@ -6,13 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
+  <link rel="stylesheet" href="stylesheet/img.css">
   <script defer src="/js/application.js"></script>
-  {{#if isSignin}}
+  <script defer type='text/javascript' src='stylesheet/bower_components/tinycolor/tinycolor.js'></script>
+   
+  {{!-- {{#if isSignin}} --}}
   <script defer src='/js/logForm.js'></script>
-   {{/if}}
-  {{#if isSignup}} 
+   {{!-- {{/if}}
+  {{#if isSignup}}  --}}
   <script defer src='/js/regForm.js'></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
   <title>We are Socks</title>
 </head>
 
@@ -30,20 +33,20 @@
       </div>
     </div>
   </div>
-  {{#if email}}
+  {{#if useremail}}
   <div id="menu">
     <p class="headermenu">Каталог</p>
-    <p class="headermenu">Конструктор</p>
-    <p class="headermenu"><a ></a>Выйти</p>
-    
-  {{else}}
-    <div id="menu">
+    <p class="headermenu"><a href="/generator">Конструктор</a></p>
+    <p class="headermenu"><a href="/signout" >Выйти</a></p>
+    {{else}}
     <p class="headermenu">Каталог</p>
-    <p class="headermenu">Конструктор</p>
+    <p class="headermenu"><a href="/generator">Конструктор</a></p>
     <p class="headermenu"><a href="/logForm">Войти</a></p>
     <p class="headermenu"><a href="/regForm">Зарегистрироваться</a></p>
     {{/if}}
 
+  
+    <div id="menu">
   </div>
   <div id="contacts">
     <p>info@elbrusboot.camp <br>

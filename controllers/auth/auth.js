@@ -33,7 +33,7 @@ exports.createUserAndSession = async (req, res, next) => {
     console.log(user, 'проверяем юзера');
 
     // записываем в req.session.user данные (id & name) (создаем сессию)
-    req.session.user = { id: user.id, email: user.email }; // req.session.user -> id, name
+    req.session.email = { id: user.id, email: user.email }; // req.session.user -> id, name
     // res.json({ 1: 1 });
     res.json({ authorised: true });
     console.log(req.session.user, 'local user session');
@@ -52,16 +52,23 @@ exports.checkUserAndCreateSession = async (req, res, next) => {
 
   // Пытаемся сначала найти пользователя в БД
   const user = await User.findOne({ where: { email: userEmail }, raw: true });
-  console.log(user)
-  if (!user) return res.json({ authorised: false });
-
+  console.log(user);
+  if (!user) {
+    return res.json({ authorised: false });
+  }
   if (user) {
     try {
       // Сравниваем хэш в БД с хэшем введённого пароля
       const isValidPassword = await bcrypt.compare(password, user.password);
-      if (!isValidPassword) return failAuth(res, ' Неправильное имя\\пароль');
+      console.log(isValidPassword);
+      if (!isValidPassword) {
+        return failAuth(res, ' Неправильное имя\\пароль');
+      }
 
-      req.session.user = { id: user.id, name: user.name }; // записываем в req.session.user данные (id & name) (создаем сессию)
+      req.session.email = { id: user.id, email: user.email }; // записываем в req.session.user данные (id
+      res.json({ authorised: true });
+      // & name) (создаем сессию)
+      // res.status(200).end();
     } catch (err) {
       console.error('Err message:', err.message);
       console.error('Err code', err.code);
@@ -83,6 +90,8 @@ exports.destroySession = (req, res, next) => {
 exports.renderSignInForm = (req, res) => res.render('logform', { isSignin: true });
 
 exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true });
+
+exports.renderGenerator = (req, res) => res.render('generator');
 
 /**
  * Завершает запрос с ошибкой аутентификации
