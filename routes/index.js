@@ -32,6 +32,16 @@ router
 router
   .route('/favorites')
   .get(renderFav);
+
+router.get('/basket', (req, res) => {
+  res.render('basket'); //создала временную ручку, чтобы сделать hbs и стили
+});
+
+router.get('/aboutUs', (req, res) => {
+  res.render('aboutUs'); //создала временную ручку, чтобы сделать hbs и стили
+});
+
+
 router
   .route('/regForm')
   // Страница регистрации пользователя
