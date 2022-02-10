@@ -5,7 +5,10 @@
   left: 145px;
   top: 177px;
 } */
-
+.favTable{
+  display: flex;
+  flex-direction: row;
+}
 .favSmallContainer {
   position: absolute;
   display: flex;

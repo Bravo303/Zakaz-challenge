@@ -2,7 +2,6 @@ const logform = document.forms.logForm;
 
 logform?.addEventListener('submit', async (event) => {
   event.preventDefault();
-  event.target.input;
 
   const userEmail = event.target.email.value;
   console.log(userEmail);
@@ -15,11 +14,12 @@ logform?.addEventListener('submit', async (event) => {
     body: JSON.stringify({ userEmail, password }),
   });
   const data = await res.json();//
+  console.log(data);
   if (data.authorised === false) { // Проверки всей херни
     alert('Вы не зарегистрированы');
     window.location = '/regForm';
   }
-  if (data.status === 200) {
+  if (data.authorised === true) {
     window.location = '/';
   }
 });

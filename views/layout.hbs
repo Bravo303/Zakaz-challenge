@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
+   <link rel="stylesheet" href="stylesheet/img.css">
   <link rel="stylesheet" href="stylesheet/index.css">
   <link rel="stylesheet" href="stylesheet/fav.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +16,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
   </style>
   <script defer src="/js/application.js"></script>
-  {{#if isSignin}}
+  <script defer type='text/javascript' src='stylesheet/bower_components/tinycolor/tinycolor.js'></script>
+   
+  {{!-- {{#if isSignin}} --}}
   <script defer src='/js/logForm.js'></script>
-  {{/if}}
-  {{#if isSignup}}
+   {{!-- {{/if}}
+  {{#if isSignup}}  --}}
   <script defer src='/js/regForm.js'></script>
-  {{/if}}
+  {{!-- {{/if}} --}}
   <title>We are Socks</title>
   <style>
     li {
@@ -44,12 +47,12 @@
         </div>
       </div>
     </div>
-    {{#if email}}
+    {{#if useremail}}
     <div id="menu">
       <p class="headermenu"><a class="menu" href="/">Каталог</a></p>
-      <p class="headermenu"><a class="menu" href="/">Конструктор</a></p>
-      <p class="headermenu"><a class="menu" href="/">Выйти</a></p>
-      <p class="headermenu"><a>Привет, {{username}}</a></p>
+      <p class="headermenu"><a class="menu" href="/generator">Конструктор</a></p>
+      <p class="headermenu"><a class="menu" href="/signout">Выйти</a></p>
+      <p class="headermenu"><a>Привет, {{useremail.username}}</a></p>
 
       {{else}}
       <div id="menu">
@@ -66,7 +69,7 @@
         </p>
       </div>
       <div id="likebasket">
-        <a href="/like"><img class="like" src="/image/like.png" width="70" height="62" class="center block"></a>
+        <a href="/favorites"><img class="like" src="/image/like.png" width="70" height="62" class="center block"></a>
         <a href="/basket"><img class="basket" src="/image/basket.png" width="70" height="62" class="center block"></a>
       </div>
 

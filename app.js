@@ -19,7 +19,17 @@ const indexRouter = require('./routes');
 app.set('view engine', 'hbs');
 // Сообщаем express, что шаблона шаблонизаторая (вью) находятся в папке "ПапкаПроекта/views".
 app.set('views', path.join(__dirname, 'views'));
+const { sequelize } = require('./db/models');
 
+async function DBC() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error.message);
+  }
+}
+DBC();
 const sessionConfig = { // Скопировал из лекции Ромы *** Dimka ***
   name: 'sid', // название куки
   store: new RedisStore({ client: redisClient }), // подключаем БД для храненя куков
@@ -33,14 +43,15 @@ const sessionConfig = { // Скопировал из лекции Ромы *** D
 };
 app.use(session(sessionConfig)); // req.session.user = {name: '....'}*** Dimka ***
 
-//  сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
-// app.use((req, res, next) => {
-//   res.locals.useremail = req.session?.email?.email; //* ** Dimka ***
-
-//   console.log('\n\x1b[33m', 'req.session.email.email:', req.session.email.email); //* ** Dimka ***
-//   console.log('\x1b[35m', 'res.locals.useremail:', res.locals.useremail); //* ** Dimka ***
-//   next();
-// });
+// сохраняем в обьект res.locals.username имя пользователя для использования username в layout.hbs
+app.use((req, res, next) => {
+  res.locals.useremail = req.session.email; //* ** Dimka ***
+  // res.locals.username = req.session.username;
+  // console.log(req.session.username);
+  // console.log('\n\x1b[33m', 'req.session.email.email:', req.session.email); //* ** Dimka ***
+  // console.log('\x1b[35m', 'res.locals.useremail:', res.locals.useremail); //* ** Dimka ***
+  next();
+});
 
 // Подключаем middleware morgan с режимом логирования "dev", чтобы для каждого HTTP-запроса на сервер в консоль выводилась информация об этом запросе.
 app.use(logger('dev'));

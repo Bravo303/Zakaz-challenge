@@ -1,3 +1,7 @@
+/* *{
+  margin: 0;
+  padding: 0;
+} */
 .indexContainer {
   position: absolute;
   text-align: center;
@@ -10,7 +14,7 @@
 #imgBaner {
   align-items: center;
   left: 325px;
-  border-radius: 0px;
+  border-radius: 20px;
 }
 
 .textAbovePictures{
