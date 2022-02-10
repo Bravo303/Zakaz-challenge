@@ -19,7 +19,17 @@ const indexRouter = require('./routes');
 app.set('view engine', 'hbs');
 // Сообщаем express, что шаблона шаблонизаторая (вью) находятся в папке "ПапкаПроекта/views".
 app.set('views', path.join(__dirname, 'views'));
+const { sequelize } = require('./db/models');
 
+async function DBC() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error.message);
+  }
+}
+DBC();
 const sessionConfig = { // Скопировал из лекции Ромы *** Dimka ***
   name: 'sid', // название куки
   store: new RedisStore({ client: redisClient }), // подключаем БД для храненя куков

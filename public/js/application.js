@@ -1,54 +1,58 @@
-// const btn = document.getElementById('btn');
-// const btn2 = document.getElementById('btn2');
-// const div = document.querySelector('#div');
-// let count = 0;
-// let countPic = 0;
-// btn.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   const img = document.createElement('img');
+const btn1 = document.querySelectorAll('.btn1');
+const bigDiv = document.querySelector('.bigImg');
+const delete1 = document.getElementById('delete');
+const reset = document.querySelector('.reset');
+const white = document.createElement('img');
+const favBtn = document.getElementById('fav');
 
-//   if (count === 1) {
-//     img.remove();
-//   } else {
-//     const val = event.target.name;
+const img = document.createElement('img');// создаём элемент img
 
-//     img.setAttribute('src', `image/${val}`);
-//     img.setAttribute('class', 'img1');
+for (let i = 0; i < btn1.length; i++) { // циклом перебираем все кнопки выбора цыета для носкоа
+  btn1[i].addEventListener('click', (event) => {
+    event.preventDefault();
+    if (white) {
+      white.remove();
+    }
+    const val = event.target.name;
 
-//     div.appendChild(img);
-//     // setTimeout(() => {
-//     //   img.remove();
-//     // }, 1000);
-
-//     count++;
-//   }
-// });
-
-// btn2.addEventListener('click', (el) => {
-//   const childDiv = document.createElement('div');
-//   childDiv.setAttribute('class', 'img2');
-//   div.appendChild(childDiv);
-//   el.preventDefault();
-//   const img2 = document.createElement('img');
-
-//   if (countPic === 1) {
-//     console.log(count);
-//     img2.remove();
-//   } else {
-//     const val = el.target.name;
-//     console.log(el.target.name);
-
-//     img2.setAttribute('src', `image/${val}`);
-//     img2.setAttribute('class', 'img1');
-//     console.log(img2);
-
-//     childDiv.appendChild(img2);
-//     // setTimeout(() => {
-//     //   img.remove();
-//     // }, 1000);
-
-//     countPic++;
-//     console.log(countPic);
-//   }
-// });
-
+    img.setAttribute('src', `image/Socks/${val}.png`);// задаём атрибутты
+    img.setAttribute('class', 'bigImg');
+    delete1.remove();
+    bigDiv.appendChild(img);
+    const btn2 = document.querySelectorAll('.btn2');
+    for (let i = 0; i < btn2.length; i++) {
+      btn2[i].addEventListener('click', async (e) => {
+        e.preventDefault();
+        const val1 = e.target.name;
+        console.log(val1);
+        img.setAttribute('src', `image/Socks/${val}_${val1}.png`);
+        console.log(img.src.slice(34));
+        const link = img.src.slice(34);
+        img.setAttribute('class', 'bigImg');
+        bigDiv.appendChild(img);
+        favBtn.addEventListener('click', async (ev) => {
+          ev.preventDefault();
+          const res = await fetch('/fav', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ link }),
+          // console.log(regForm, "проверка рег формы");
+          });
+        });
+      });
+    }
+  });
+}
+if (white) {
+  reset.addEventListener('click', (e) => {
+    e.preventDefault();
+    img.remove();
+    delete1.remove();
+    white.setAttribute('src', 'image/Socks/white.png');// задаём атрибутты
+    white.setAttribute('class', 'bigImg');
+    white.setAttribute('id', 'reset');
+    bigDiv.appendChild(white);
+  });
+}

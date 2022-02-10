@@ -1,2 +1,2 @@
-DB_URL=postgres://admindb:admindb@localhost:5432/socks
+DB_URL=postgres://admindb:admindb@localhost:5432/sock
 COOKIE_SECRET=blablabla
