@@ -6,27 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="stylesheet/style.css">
-   <link rel="stylesheet" href="stylesheet/img.css">
+  <link rel="stylesheet" href="stylesheet/img.css">
   <link rel="stylesheet" href="stylesheet/index.css">
   <link rel="stylesheet" href="stylesheet/fav.css">
   <link rel="stylesheet" href="stylesheet/aboutus.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
   </style>
-   <script defer src="/js/fav.js"></script>
-   <script defer src="/js/basket.js"></script>
-   
+  <script defer src="/js/fav.js"></script>
+  <script defer src="/js/basket.js"></script>
+
   <script defer src="/js/application.js"></script>
   <script defer type='text/javascript' src='stylesheet/bower_components/tinycolor/tinycolor.js'></script>
-   
+
   {{!-- {{#if isSignin}} --}}
   <script defer src='/js/logForm.js'></script>
-   {{!-- {{/if}}
-  {{#if isSignup}}  --}}
+  {{!-- {{/if}}
+  {{#if isSignup}} --}}
   <script defer src='/js/regForm.js'></script>
   {{!-- {{/if}} --}}
   <title>We are Socks</title>
@@ -57,7 +57,7 @@
       <p class="headermenu"><a class="menu" href="/aboutus">О нас</a></p>
       <p class="headermenu"><a class="menu" href="/generator">Конструктор</a></p>
       <p class="headermenu"><a class="menu" href="/signout">Выйти</a></p>
-      <p class="headermenu"><a id="greetingName">Привет, {{useremail.username}}</a></p>
+      <p class="headermenu"><a id="greetingName">"Привет, {{useremail.username}}"</a></p>
 
       {{else}}
       <div id="menu">
@@ -84,16 +84,14 @@
     {{{body}}}
   </main>
 
-
-
   <div id="footer">
     <div id="footercolumns">
       <div id="footermenu">
         <ul>
-          <li href="/aboutus">О нас</li>
-          <li ><a href="/generator"></a>Конструктор</li>
-          <li href="/logForm">Войти</li>
-          <li href="/regForm">Зарегистрироваться</li>
+          <li class="footerli"> <a class="footmenu" href="/aboutus">О нас</a></li>
+          <li class="footerli"> <a class="footmenu" href="/generator">Конструктор</a></li>
+          <li class="footerli"> <a class="footmenu" href="/logForm">Войти</a></li>
+          <li class="footerli"> <a class="footmenu" href="/regForm">Зарегистрироваться</a></li>
         </ul>
       </div>
       <div id="socials">

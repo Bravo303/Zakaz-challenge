@@ -20,9 +20,9 @@ position: absolute;
 width: 100%;
 height: 163px;
 left: 0px;
-top: 841px;
+/* top: 841px; */
 background: #FEDBBA;
-margin-top: 200px;
+/* margin-top: 200px; */
 
 }
 #menu, #contacts, #likebasket {
@@ -34,7 +34,7 @@ margin-top: 200px;
 
 /* Dimka */
 
-#contacts {
+#contacts, #footeradress {
   font-family: 'Pangolin', cursive;
   /* font-family: Roboto; */
   font-style: normal;
@@ -44,6 +44,11 @@ margin-top: 200px;
   text-align: right;
   color: #000000;
 }
+
+#footeradress {
+  font-size:18px;
+}
+
 
 #logo {
   display: flex;
@@ -73,10 +78,13 @@ margin-top: 200px;
   font-weight: 600;
   line-height: 27px;
   font-size: 25px;
-    position: relative;
-    color: rgb(129, 170, 129);
-    cursor: pointer;
-    line-height: 1;
+  position: relative;
+  /* color: rgb(129, 170, 129); */
+  color: rgb(238, 10, 10);
+  cursor: pointer;
+  line-height: 1;
+  /* text-decoration: none; 
+  user-select: none; */
 }
 
 hr {
@@ -117,17 +125,17 @@ text-align: center;
 
 #footercolumns {
   
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-top:20px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top:20px;
+  align-items: center;
     
     
 }
 #footermenu {
-  font-family: Roboto;
-  display: block;
+font-family: Roboto;
+display: block;
 font-style: normal;
 font-weight: normal;
 font-size: 18px;
@@ -138,18 +146,20 @@ color: #000000;
 
 #policy {
   display:flex;
-  flex-direction: row;
-  width:1000px;
-  justify-content: space-between;
-  align-items: center;
-  margin-left:250px;
-  margin-right:300px;
+  /* width:1000px; */
+  font-family: 'Pangolin', cursive;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* margin-left:400px;
+  margin-right:300px; */
   margin-top:-20px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 15px;
-  line-height: 21px;
+  /* font-family: Roboto; */
+  /* font-style: normal;
+  font-weight: normal; */
+  font-size: 18px;
+  /* line-height: 21px; */
+  justify-content: space-around;
+  /* align-items: center; */
 
 }
 /* форма регистрации*/
@@ -272,6 +282,38 @@ a.menu:focus:after {
 width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 }
 
+a.footmenu {
+  font-family: 'Pangolin', cursive;
+  font-size: 18px;
+  position: relative;
+  color: black;
+  cursor: pointer;
+  line-height: 1; 
+  text-decoration: none; 
+  }
+  a.footmenu:after {
+  display: block;
+  position: absolute;
+  right: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+  width: 0;/*задаём длинну линии до наведения курсора*/
+  height: 1px; /*задаём ширину линии*/
+  background-color: red; /*задаём цвет линии*/
+  content: "";
+  transition: width 0.9s ease-out; /*задаём время анимации*/
+  }
+  
+  a.footmenu:hover:after,
+  a.footmenu:focus:after {
+  width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+  }
 
+  #footeradress {
+    font-size:18px;
+  }
 
+/* Generator!!! */
+  main {
+    margin-top: 200px;
+  }
 
+  
