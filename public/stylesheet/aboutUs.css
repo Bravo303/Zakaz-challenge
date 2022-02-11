@@ -39,13 +39,25 @@
   justify-content: space-between;
    
  }
+
+ #firstReviewss{
+  text-align: center;
+  position: relative;
+  display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ /* padding: 10px; */
+}
+.klients {
+  padding:20px;
+}
+
  .beforeAfterText {
   margin-top: 40px;
   font-family: 'Pangolin', cursive;
   font-style: normal;
   font-size: 15px;
   line-height: 25px;
-  
  }
 
  /* #beforeAfterImg {
@@ -68,7 +80,7 @@
   padding-top:50px;
   justify-content: space-around;
 }
- .yamap {
+.yamap {
  
   display: flex; /* флекс - дирекшен роу по умолчанию - горизонт*/
   justify-content: space-around;
