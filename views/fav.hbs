@@ -4,22 +4,22 @@
   </div>
   <div class="favSmallContainer">
     <div class="favTable">
-      <table >
+      <table>
         {{#each fav}}
         <tr class='flextable js-favItem'>
           
           <td><img class="small" src='image/Socks/{{this.favorites_link}}'></td>
           <td>
-            <button class="deletFav" id={{this.id}}>удалить из избранного</button>
+            <button class="deletFav" id={{this.id}}>Удалить из избранного</button>
           </td>
           <td>
-            <button class="addFav" id=1{{this.id}}>добавить в корзину</button>
+            <button class="addFav" id=1{{this.id}}>Добавить в корзину</button>
           </td>
         </tr>
         {{/each}}
         
       </table>
-      <div class="favBtnContainer">
+      {{!-- <div class="favBtnContainer">
         <div class="">
          
         </div>
@@ -31,7 +31,7 @@
         </div>
 
 
-      </div>
+      </div> --}}
 
     </div>
 

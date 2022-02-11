@@ -2,8 +2,8 @@
   <div>
     <h3 class="favTitle">Корзина</h3>
   </div>
-  <div class="favSmallContainer">
-    <div class="favTable">
+  <div class="basketSmallContainer">
+    <div class="basketTable">
       <table>
         {{#each findBasket }}
         <tr class='js-basItem'>
@@ -18,7 +18,7 @@
         
       </table>
       <div>
-        <h4 class='js-total' id="total">Итого:{{reduc}} пар</h4>
+        <h4 class='js-total' id="total">Итого:{{reduc}} пар(а)</h4>
       </div>
       <div class="favBtnContainer">
         <div class="">
@@ -31,8 +31,11 @@
       </div>
 
     </div>
-    <div>
-      <p>*доступно только для зарегистрированных пользователей</p>
+    
+    <div class="basketOrderBottom">
+      <div>
+        <button class="btnCreateOrder"> Оформить заказ </button>
+      </div>
     </div>
 
   </div>
