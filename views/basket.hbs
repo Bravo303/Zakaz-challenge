@@ -1,21 +1,22 @@
 <div class="favContainer">
   <div>
-    <h3 class="favTitle">Корзина</h3>
+
   </div>
   <div class="basketSmallContainer">
+    <h3 class="favTitle">Корзина</h3>
     <div class="basketTable">
       <table>
         {{#each findBasket }}
         <tr class='js-basItem'>
           {{!-- <td>Номер</td> --}}
           <td><img class="small" src='image/Socks/{{this.basket_link}}'></td>
-         
+
           <td id=4{{this.id}} class='js-count'>{{this.basket_size}}</td>
           {{!-- <td>Цена</td> --}}
-          <td><button class='deletFromBasket1' id=3{{this.id}} >Убрать из корзины</button></td>
+          <td><button class='deletFromBasket1' id=3{{this.id}}>Убрать из корзины</button></td>
         </tr>
         {{/each}}
-        
+
       </table>
       <div>
         <h4 class='js-total' id="total">Итого:{{reduc}} пар(а)</h4>
@@ -27,11 +28,11 @@
         <div class="">
           {{!-- <img class="btnReg" src="/image/кнопкаЗарегистрироваться.png" alt=""> --}}
         </div>
-      
+
       </div>
 
     </div>
-    
+
     <div class="basketOrderBottom">
       <div>
         <button class="btnCreateOrder"> Оформить заказ </button>
@@ -40,5 +41,5 @@
 
   </div>
 
-  
+
 </div>

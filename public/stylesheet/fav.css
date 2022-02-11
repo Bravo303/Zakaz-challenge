@@ -8,28 +8,35 @@
 .favTable{
   margin-top:30px;
 }
-
+/* Dimka */
 .favSmallContainer {
-  position: absolute;
+  /* position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: space-around;  
-  width: 991px;
+   width: 991px;
   height: auto;
   left: 224px;
-  top: 245px;
+  top: 245px; 
   background: #C6D6D3;
   border-radius: 90px;
-  margin-top: 30px;
+  margin-top: 30px; */
+  flex-direction: column;
+  width: 991px;
+  background: #C6D6D3;
+  border-radius: 90px;
+  justify-content: center;
   }
+/* Dimka */
 
   .favTitle {
-  position: absolute;
+  /* position: absolute;
   width: 208px;
   height: 30px;
   left: 224px;
-  top: 177px;
-  font-family: Poppins;
+  top: 177px; */
+  /* font-family: Poppins; */
+  font-family: 'Pangolin', cursive;
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
@@ -131,19 +138,26 @@
     background-position: 100px;
   }
 
+/* Dimka */
+.favContainer {
+  display: flex;
+  justify-content: center;
 
+}
+/* Dimka */
   .basketSmallContainer {
-    position: absolute;
-    display: flex;
+    /* position: absolute; */
+    /* display: flex; */
     flex-direction: column;
-    justify-content: flex-start;  
+    /* justify-content: flex-start;   */
     width: 991px;
-    height: auto;
-    left: 224px;
-    top: 245px;
+    /* height: auto; */
+    /* left: 224px;
+    top: 245px; */
     background: #C6D6D3;
     border-radius: 90px;
-    margin-top: 30px;
+    /* margin-top: 20px; */
+    justify-content: center;
     }
   
 
