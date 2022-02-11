@@ -86,35 +86,42 @@
 
   <div id="footer">
     <div id="footercolumns">
+      {{#if useremail}}
       <div id="footermenu">
         <ul>
-
           <li class="footerli"> <a class="footmenu" href="/aboutus">О нас</a></li>
           <li class="footerli"> <a class="footmenu" href="/generator">Конструктор</a></li>
-          <li class="footerli"> <a class="footmenu" href="/logForm">Войти</a></li>
-          <li class="footerli"> <a class="footmenu" href="/regForm">Зарегистрироваться</a></li>
-
+          <li class="footerli"> <a class="footmenu" href="/signout">Выйти</a></li>
         </ul>
+        {{else}}
+        <div id="footermenu">
+          <ul>
+            <li class="footerli"> <a class="footmenu" href="/aboutus">О нас</a></li>
+            <li class="footerli"> <a class="footmenu" href="/generator">Конструктор</a></li>
+            <li class="footerli"> <a class="footmenu" href="/logForm">Войти</a></li>
+            <li class="footerli"> <a class="footmenu" href="/regForm">Зарегистрироваться</a></li>
+            {{/if}}
+          </ul>
+        </div>
+        <div id="socials">
+          <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="50"
+              height="50" class="center block"></a>
+          <a href="https://www.twitter.com"><img class="socials" src="/image/twitter.png" width="50" height="50"
+              class="center block"></a>
+          <a href="https://www.youtube.com/channel/UCaKZxz2d1KI-wN3l6fX7zdQ/featured "><img class="socials"
+              src="/image/youtube.png" width="50" height="50" class="center block"></a>
+        </div>
+        <div id="footeradress">
+          <p>+7 (499) 938-68-24 <br>
+            info@elbrusboot.camp<br>
+            ул.Орджоникидзе, д.11 стр.10 </p>
+        </div>
       </div>
-      <div id="socials">
-        <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="50"
-            height="50" class="center block"></a>
-        <a href="https://www.twitter.com"><img class="socials" src="/image/twitter.png" width="50" height="50"
-            class="center block"></a>
-        <a href="https://www.youtube.com/channel/UCaKZxz2d1KI-wN3l6fX7zdQ/featured "><img class="socials"
-            src="/image/youtube.png" width="50" height="50" class="center block"></a>
-      </div>
-      <div id="footeradress">
-        <p>+7 (499) 938-68-24 <br>
-          info@elbrusboot.camp<br>
-          ул.Орджоникидзе, д.11 стр.10 </p>
+      <div id="policy">
+        <p>© 2022 All rights reserved. We Are Socks</p>
+        <p>By using this site you agree to the privacy policy</p>
       </div>
     </div>
-    <div id="policy">
-      <p>© 2022 All rights reserved. We Are Socks</p>
-      <p>By using this site you agree to the privacy policy</p>
-    </div>
-  </div>
 </body>
 
 </html>
