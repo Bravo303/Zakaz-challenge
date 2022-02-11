@@ -1,0 +1,53 @@
+.aboutUsContainer{
+  position: absolute;
+  justify-content: center;
+  margin: 140px 140px auto;
+  width: 1150px;
+}
+ #aboutUstext{
+   margin-top: 40px;
+  font-family: 'Pangolin', cursive;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 30px;
+  position: relative;
+  color: black;
+  text-align: center;
+ }
+
+ #beforeAfter {
+
+  margin-left:20%;
+ }
+
+ #firstReview{
+   text-align: center;
+   position: relative;
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+   
+ }
+ .beforeAfterText {
+  margin-top: 40px;
+  font-family: 'Pangolin', cursive;
+  font-style: normal;
+  font-size: 15px;
+  line-height: 25px;
+  
+ }
+
+ /* #beforeAfterImg {
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+ } */
+
+ .textAndMap {
+  text-align: left;
+  position: relative;
+  display: flex;
+ flex-direction: row;
+ justify-content: space-between;
+ }

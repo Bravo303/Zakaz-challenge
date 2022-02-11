@@ -32,6 +32,7 @@ router.post('/fav', async (req, res) => {
     res.status(200).end();
   } else res.status(200).end();
 });
+
 router
   .route('/generator')
   .get(renderGenerator);

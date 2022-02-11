@@ -9,6 +9,7 @@
    <link rel="stylesheet" href="stylesheet/img.css">
   <link rel="stylesheet" href="stylesheet/index.css">
   <link rel="stylesheet" href="stylesheet/fav.css">
+  <link rel="stylesheet" href="stylesheet/aboutus.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,12 +40,12 @@
 
 
 <body>
-  <div id="shapka">
+  <header id="shapka">
 
     <div id="logo">
       <a href="/"><img class="logo" src="image/logo.png" width="102" height="108" class="center block"></a>
       <div class="company">
-        <div id="comapanyname">
+        <div id="comapanyname" href="/aboutus">
           <h2>We are Socks</h2>
           <hr>
           <p class="deviz">Носки - это к нам!</p>
@@ -53,15 +54,15 @@
     </div>
     {{#if useremail}}
     <div id="menu">
-      <p class="headermenu"><a class="menu" href="/">Каталог</a></p>
+      <p class="headermenu"><a class="menu" href="/aboutus">О нас</a></p>
       <p class="headermenu"><a class="menu" href="/generator">Конструктор</a></p>
       <p class="headermenu"><a class="menu" href="/signout">Выйти</a></p>
-      <p class="headermenu"><a>Привет, {{useremail.username}}</a></p>
+      <p class="headermenu"><a id="greetingName">Привет, {{useremail.username}}</a></p>
 
       {{else}}
       <div id="menu">
-        <p class="headermenu"><a class="menu" href="/">Каталог</a></p>
-        <p class="headermenu"><a class="menu" href="/">Конструктор</a></p>
+        <p class="headermenu"><a class="menu" href="/aboutus">О нас</a></p>
+        <p class="headermenu"><a class="menu" href="/generator">Конструктор</a></p>
         <p class="headermenu"><a class="menu" href="/logForm">Войти</a></p>
         <p class="headermenu"><a class="menu" href="/regForm">Зарегистрироваться</a></p>
         {{/if}}
@@ -78,10 +79,10 @@
       </div>
 
     </div>
-  </div>
-  <div>
+  </header>
+  <main>
     {{{body}}}
-  </div>
+  </main>
 
 
 
@@ -89,10 +90,10 @@
     <div id="footercolumns">
       <div id="footermenu">
         <ul>
-          <li>Каталог</li>
-          <li>Конструктор</li>
-          <li>Войти</li>
-          <li>Регистрация</li>
+          <li href="/aboutus">О нас</li>
+          <li href="/generator">Конструктор</li>
+          <li href="/logForm">Войти</li>
+          <li href="/regForm">Зарегистрироваться</li>
         </ul>
       </div>
       <div id="socials">

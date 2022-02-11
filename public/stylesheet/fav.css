@@ -20,6 +20,11 @@
   top: 245px;
   background: #C6D6D3;
   border-radius: 90px;
+  border: 1px dotted;
+  }
+  .favSmallContainer > * {
+    border: 1px solid red;
+
   }
 
   .favTitle {
