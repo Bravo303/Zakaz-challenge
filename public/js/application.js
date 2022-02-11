@@ -33,7 +33,7 @@ basket?.addEventListener('click', async (e) => {
   if (!resp.ok) alert('что-то не удалось');
 });
 
-fav.addEventListener('click', async (e) => {
+fav?.addEventListener('click', async (e) => {
   const resp = await fetch('/fav', {
     method: 'POST',
     headers: {

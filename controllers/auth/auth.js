@@ -98,14 +98,15 @@ exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true 
 exports.renderGenerator = (req, res) => res.render('generator');
 
 exports.renderFav = async (req, res) => {
-  console.log(req.session.email);
-  if (req.session.email) {
-    const a = req.session.email.id;
+  if (res.locals.useremail) {
+    const a = res.locals.useremail.id;
     const fav = await Favorites.findAll({ where: { user_id: a }, raw: true });
     console.log(fav);
     res.render('fav', { fav });
   }
-  res.status(401);
+  if (!res.locals.useremail) {
+    res.render('regform');
+  }
 };
 exports.deletFromFav = async (req, res) => {
   const deletId = req.params.id;
@@ -114,20 +115,25 @@ exports.deletFromFav = async (req, res) => {
   res.end();
 };
 exports.renderBasket = async (req, res) => {
-  if (req.session.email) {
+  console.log('=>>>>>', res.locals.useremail);
+  if (res.locals.useremail) {
     const localsId = res.locals.useremail.id;
-    const findBasket = await Basket.findAll({ where: { user_id: localsId }, raw: true });
-    // console.log(findBasket);
+    console.log(localsId);
+    const findBasket = await Basket.findAll({ where: { user_id: res.locals.useremail.id }, raw: true });
+    console.log(findBasket);
     const reduc = await findBasket.reduce((a, b) => a + b.basket_size, 0);
-    // console.log(reduc);
-    res.render('basket', { findBasket, reduc });
-  }res.render('regform');
+    console.log(reduc);
+    return res.render('basket', { findBasket, reduc });
+  }
+  if (!res.locals.useremail) {
+    res.render('regform');
+  }
 };
 
 exports.addInBasket = async (req, res) => {
   console.log('req.body', req.body);
-  const { linkPic } = req.body;
-  const { link } = req.body;
+  const { linkPic, link } = req.body;
+
   if (linkPic) {
     const changeCount = await Basket.findOne({ where: { basket_link: linkPic } });
     if (changeCount) {
@@ -182,16 +188,27 @@ exports.deleteFromBasket = async (req, res) => {
     console.log(err);
   }
 };
-
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+    user: 'winfield.feil74@ethereal.email',
+    pass: 'q1JxXAr1kznU9CjaDw',
+  },
+});
 exports.sendEmail = async (req, res) => {
-  const transporter = nodemailer.createTransport({
-    host: 'smtp.ethereal.email',
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
-    },
+  // const testAccount = await nodemailer.createTestAccount();
+  const ac = await Basket.findAll({ where: { user_id: res.locals.useremail.id }, raw: true });
+  console.log('qwe', ac);
+  
+  const redu = await ac.reduce((a, b) => a + b.basket_size, 0);
+  console.log(string);
+  const info = await transporter.sendMail({
+    from: '"Fred Foo 👻" <foo@example.com>', // sender address
+    to: 'bravotarget@yandex.ru', // list of receivers
+    subject: 'Заказ', // Subject line
+    text: `количество пар носков:${redu}`, // plain text body
+    html: `<div>${string}</div>`, // html body
   });
 };
 /**
