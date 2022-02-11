@@ -12,5 +12,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+      "no-loop-func":"off",
+      "prefer-template":"off"
     }
 }

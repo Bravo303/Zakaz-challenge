@@ -5,7 +5,7 @@ for (let l = 0; l < deleteFromBasket.length; l++) {
     event.preventDefault();
     console.log(event.target.id);
     const delId = event.target.id;
-    console.log(delId)
+    console.log(delId);
     const res = await fetch(`/baskets/${delId.slice(1)}`, {
       method: 'DELETE',
       headers: {
@@ -17,7 +17,18 @@ for (let l = 0; l < deleteFromBasket.length; l++) {
     if (d.delete === true) {
       event.target.closest('.js-basItem').remove();
       const countEl = document.querySelector('.js-total');
-      countEl.innerText = 'Итого 0 пар';
+      // countEl.innerText = 'Итого 0 пар';
+      const r = await fetch('baskets/count', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // body: JSON.stringify({ 1: 1 }),
+      });
+      const dat = await r.json();
+      console.log(dat);
+      const countElement = document.querySelector('.js-total');
+      countElement.innerText = `Итого :${dat.reduceNew} пар`;
     }
     if (d.delete === false) {
       console.log(d.count);

@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.post('/fav', async (req, res) => {
   const emailId = res.locals.useremail.id;
   const favLink = req.body.link;
-  console.log('=>>>>>>>>>',favLink);
+  console.log('=>>>>>>>>>', favLink);
   const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
   if (!povtor) {
     const favSock = await Favorites.create({
@@ -43,6 +43,14 @@ router
 // router.get('/basket', (req, res) => {
 //   res.render('basket'); // создала временную ручку, чтобы сделать hbs и стили
 // });
+
+router.post('/baskets/count', async (req, res) => {
+  console.log(1111111111111111);
+  const basUser = await Basket.findAll({ where: { user_id: res.locals.useremail.id } });
+  const reduceNew = await basUser.reduce((a, b) => a + b.basket_size, 0);
+  console.log(reduceNew);
+  res.json({ reduceNew });
+});
 
 router.get('/aboutUs', (req, res) => {
   res.render('aboutUs'); // создала временную ручку, чтобы сделать hbs и стили
