@@ -24,7 +24,9 @@ router.get('/', (req, res) => {
 router.post('/fav', async (req, res) => {
   try {
     const emailId = res.locals.useremail.id;
+    console.log(emailId);
     const favLink = req.body.link;
+    console.log(favLink);
 
     console.log('favLink', req.body);
     const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
@@ -63,7 +65,7 @@ router.get('/aboutUs', (req, res) => {
 });
 
 router.get('/policy', (req, res) => { // Dimka ручка для политики!
-  res.render('policy')
+  res.render('policy');
 });
 
 router
@@ -98,6 +100,6 @@ router
 
 router
   .route('/email')
-  .post(sendEmail);
+  .get(sendEmail);
 
 module.exports = router;
