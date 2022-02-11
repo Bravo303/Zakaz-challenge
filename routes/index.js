@@ -62,6 +62,10 @@ router.get('/aboutUs', (req, res) => {
   res.render('aboutUs'); // создала временную ручку, чтобы сделать hbs и стили
 });
 
+router.get('/policy', (req, res) => { // Dimka ручка для политики!
+  res.render('policy')
+});
+
 router
   .route('/regForm')
   // Страница регистрации пользователя

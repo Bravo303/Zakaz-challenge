@@ -1,6 +1,6 @@
 #shapka {
-position: fixed; /* поставила пока тут абсолют, фикс закрепляет на экране, но картинка наежает на него
-завтра хочу спросить у Ромы, в гугле не нашла ответ */
+position: fixed; /* поставила пока тут абсолют, фикс закрепляет на экране, но картинка наежает на него */
+/*завтра хочу спросить у Ромы, в гугле не нашла ответ */
 display: flex;
 flex-direction: row;
 justify-content: space-around;
@@ -12,17 +12,21 @@ background: #FEDBBA;
 color: black;
 z-index: 1;
 }
+
+
 /* main {
   z-index: -1;
 } */
+
+
 #footer {
-position: absolute;
+/* display: flex; */
 width: 100%;
-height: 163px;
-left: 0px;
-top:100%-163px;
-/* top: 841px; */
 background: #FEDBBA;
+/* height: 163px; */
+/* left: 0px; */
+/* top: 841px; */
+/* position: absolute; */
 /* margin-top: 200px; */
 
 }
@@ -161,7 +165,15 @@ color: #000000;
   /* line-height: 21px; */
   justify-content: space-around;
   /* align-items: center; */
+  text-decoration: none; 
+  user-select: none;
+  color:black;
+}
 
+.policyRight {
+  text-decoration: none; 
+  user-select: none;
+  color:black;
 }
 /* форма регистрации*/
 /* body {
@@ -244,11 +256,19 @@ a {
 } */
 
 /* Dimka */
-div [name="logForm"], div [name="regForm"] {
+/* div [name="logForm"], div [name="regForm"] {
+  width: 30%;
+  position: absolute;
+  margin-left: 35%;
+} */
+
+.regForm, .logForm {
   width: 30%;
   position: absolute;
   margin-left: 35%;
 }
+
+
 
 #formTitle {
   text-align: center;
@@ -318,3 +338,30 @@ a.footmenu {
   }
 
   
+  .policyRight {
+    font-family: 'Pangolin', cursive;
+    font-size: 18px;
+    position: relative;
+    color: black;
+    cursor: pointer;
+    line-height: 1; 
+    text-decoration: none; 
+    }
+    .policyRight:after {
+    display: block;
+    position: absolute;
+    right: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0;/*задаём длинну линии до наведения курсора*/
+    height: 1px; /*задаём ширину линии*/
+    background-color: red; /*задаём цвет линии*/
+    content: "";
+    transition: width 0.9s ease-out; /*задаём время анимации*/
+    }
+    
+    .policyRight:hover:after,
+    .policyRight:focus:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+    }
+.policyText {
+  margin: 50px;
+}
