@@ -14,23 +14,30 @@ const {
   addInBasket,
   renderBasket,
   deleteFromBasket,
+  sendEmail,
+
 } = require('../controllers/auth/auth.js');
 
 router.get('/', (req, res) => {
   res.render('index');
 });
 router.post('/fav', async (req, res) => {
-  const emailId = res.locals.useremail.id;
-  const favLink = req.body.link;
-  console.log('=>>>>>>>>>', favLink);
-  const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
-  if (!povtor) {
-    const favSock = await Favorites.create({
-      user_id: emailId,
-      favorites_link: favLink,
-    });
-    res.status(200).end();
-  } else res.status(200).end();
+  try {
+    const emailId = res.locals.useremail.id;
+    const favLink = req.body.link;
+
+    console.log('favLink', req.body);
+    const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
+    if (!povtor) {
+      const favSock = await Favorites.create({
+        user_id: emailId,
+        favorites_link: favLink,
+      });
+      res.status(200).end();
+    } else res.status(200).end();
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router
@@ -45,7 +52,6 @@ router
 // });
 
 router.post('/baskets/count', async (req, res) => {
-  console.log(1111111111111111);
   const basUser = await Basket.findAll({ where: { user_id: res.locals.useremail.id } });
   const reduceNew = await basUser.reduce((a, b) => a + b.basket_size, 0);
   console.log(reduceNew);
@@ -85,5 +91,9 @@ router
 router
   .route('/baskets/:id')
   .delete(deleteFromBasket);
+
+router
+  .route('/email')
+  .post(sendEmail);
 
 module.exports = router;

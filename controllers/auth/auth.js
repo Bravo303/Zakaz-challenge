@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 // const { where } = require('sequelize/types');
 const {
   User, Basket, Favorites, Order,
@@ -97,10 +98,14 @@ exports.renderSignUpForm = (req, res) => res.render('regform', { isSignup: true 
 exports.renderGenerator = (req, res) => res.render('generator');
 
 exports.renderFav = async (req, res) => {
-  const a = req.session.email.id;
-  const fav = await Favorites.findAll({ where: { user_id: a }, raw: true });
-  console.log(fav);
-  res.render('fav', { fav });
+  console.log(req.session.email);
+  if (req.session.email) {
+    const a = req.session.email.id;
+    const fav = await Favorites.findAll({ where: { user_id: a }, raw: true });
+    console.log(fav);
+    res.render('fav', { fav });
+  }
+  res.status(401);
 };
 exports.deletFromFav = async (req, res) => {
   const deletId = req.params.id;
@@ -109,16 +114,18 @@ exports.deletFromFav = async (req, res) => {
   res.end();
 };
 exports.renderBasket = async (req, res) => {
-  const localsId = res.locals.useremail.id;
-  const findBasket = await Basket.findAll({ where: { user_id: localsId }, raw: true });
-  // console.log(findBasket);
-  const reduc = await findBasket.reduce((a, b) => a + b.basket_size, 0);
-  // console.log(reduc);
-  res.render('basket', { findBasket, reduc });
+  if (req.session.email) {
+    const localsId = res.locals.useremail.id;
+    const findBasket = await Basket.findAll({ where: { user_id: localsId }, raw: true });
+    // console.log(findBasket);
+    const reduc = await findBasket.reduce((a, b) => a + b.basket_size, 0);
+    // console.log(reduc);
+    res.render('basket', { findBasket, reduc });
+  }res.render('regform');
 };
 
 exports.addInBasket = async (req, res) => {
-  console.log(req.body);
+  console.log('req.body', req.body);
   const { linkPic } = req.body;
   const { link } = req.body;
   if (linkPic) {
@@ -174,11 +181,18 @@ exports.deleteFromBasket = async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+};
 
-  // findBas.increment('basket_size', { by: 1 });
-
-  // const destroy = await Basket.destroy({ where: { id: delBasket } });
-  // res.end();
+exports.sendEmail = async (req, res) => {
+  const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+  });
 };
 /**
  * Завершает запрос с ошибкой аутентификации

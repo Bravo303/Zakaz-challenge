@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="stylesheet/img.css">
   <link rel="stylesheet" href="stylesheet/index.css">
   <link rel="stylesheet" href="stylesheet/fav.css">
-  <link rel="stylesheet" href="stylesheet/aboutus.css">
+  <link rel="stylesheet" href="stylesheet/aboutUs.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,14 +87,20 @@
   <div id="footer">
     <div id="footercolumns">
       <div id="footermenu">
-        <ul>
+        {{#if useremail}}
 
+         <li class="footerli"> <a class="footmenu" href="/aboutus">О нас</a></li>
+          <li class="footerli"> <a class="footmenu" href="/generator">Конструктор</a></li>
+          <li class="footerli"> <a class="footmenu" href="/signout">Выйти</a></li>
+  
+         {{else}}
+        <ul>
           <li class="footerli"> <a class="footmenu" href="/aboutus">О нас</a></li>
           <li class="footerli"> <a class="footmenu" href="/generator">Конструктор</a></li>
           <li class="footerli"> <a class="footmenu" href="/logForm">Войти</a></li>
           <li class="footerli"> <a class="footmenu" href="/regForm">Зарегистрироваться</a></li>
-
         </ul>
+        {{/if}}
       </div>
       <div id="socials">
         <a href="https://www.instagram.com/elbrus.bootcamp/"><img class="socials" src="/image/insta.png" width="50"
