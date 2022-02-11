@@ -37,7 +37,7 @@ fav.addEventListener('click', async (e) => {
   const resp = await fetch('/fav', {
     method: 'POST',
     headers: {
-      'Content-Type': 'aplication/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({ link: `${color}${design ? '_' + design : ''}.png` }),
   });
