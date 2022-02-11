@@ -57,14 +57,99 @@
   border:5px solid black
 }
 
+#square7{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_red.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+#square8{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_yellow.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+#square9{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_green.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+#square10{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_orange.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+#square11{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_blue.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+#square12{
+  width: 100px;
+  height: 100px;
+  background-image: url(/image/Socks/dots_white.png);
+  border-radius: 35px;
+  border:5px solid black
+}
+
 .fotterBtn{
   display: flex;
   flex-direction: row;
   justify-content: end;
+  margin-top: 50px;
 }
 .fBtn{
-  margin-top: 100px;
-  margin-right: 100px;
+  border-color: #e0d9d7;
+  border-radius: 3em;
+  color: rgb(0, 0, 0);
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  margin-top:-20px;
+  margin-bottom:40px;
+  /* text-shadow: rgb(105, 226, 111) 1px 0 10px; */
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 155, 5, 0.6) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, rgba(255, 177, 8, 0.6) 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  height: 50px;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+.fBtn:hover {
+  background-position: 0;
+}
+
+.resetfBtn{
+  border-color: #e0d9d7;
+  border-radius: 3em;
+  color: rgb(0, 0, 0);
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  margin-top:-20px;
+  margin-bottom:40px;
+  /* text-shadow: rgb(105, 226, 111) 1px 0 10px; */
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 155, 5, 0.6) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, rgba(255, 177, 8, 0.6) 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  height: 50px;
+  -webkit-transition: background 300ms ease-in-out;
+  transition: background 300ms ease-in-out;
+}
+.resetfBtn:hover {
+  background-position: 0;
 }
 .small{
   width: 50px;
@@ -75,4 +160,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+} 
+.btn1 {
+  margin-top:30px;
 }
