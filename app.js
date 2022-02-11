@@ -5,7 +5,7 @@ const logger = require('morgan');
 const path = require('path');
 require('dotenv').config(); // подключаем чтение из файла .env + npm i dotenv  *** Dimka ***
 // const dbConCheck = require('./db/dbConCheck.js') // Проверка коннекта с БД *** Dimka ***
-
+// const { DataTypes } = require('sequelize/types');
 const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
 

@@ -1,7 +1,7 @@
 const express = require('express');
 // const router = require('express').Router();
 const router = express.Router();
-const { Favorites } = require('../db/models');
+const { Favorites, Basket } = require('../db/models');
 const {
   checkUserAndCreateSession,
   createUserAndSession, destroySession,
@@ -10,6 +10,10 @@ const {
   renderSignUpForm,
   renderGenerator,
   renderFav,
+  deletFromFav,
+  addInBasket,
+  renderBasket,
+  deleteFromBasket,
 } = require('../controllers/auth/auth.js');
 
 router.get('/', (req, res) => {
@@ -18,12 +22,14 @@ router.get('/', (req, res) => {
 router.post('/fav', async (req, res) => {
   const emailId = res.locals.useremail.id;
   const favLink = req.body.link;
+  console.log('=>>>>>>>>>',favLink);
   const povtor = await Favorites.findOne({ where: { favorites_link: favLink } });
   if (!povtor) {
     const favSock = await Favorites.create({
       user_id: emailId,
       favorites_link: favLink,
     });
+    res.status(200).end();
   } else res.status(200).end();
 });
 router
@@ -33,9 +39,9 @@ router
   .route('/favorites')
   .get(renderFav);
 
-router.get('/basket', (req, res) => {
-  res.render('basket'); // создала временную ручку, чтобы сделать hbs и стили
-});
+// router.get('/basket', (req, res) => {
+//   res.render('basket'); // создала временную ручку, чтобы сделать hbs и стили
+// });
 
 router.get('/aboutUs', (req, res) => {
   res.render('aboutUs'); // создала временную ручку, чтобы сделать hbs и стили
@@ -56,5 +62,19 @@ router
   .post(checkUserAndCreateSession);
 
 router.get('/signout', destroySession);
+router
+  .route('/:id')
+  .delete(deletFromFav);
+router
+  .route('/addBasket')
+  .put(addInBasket)
+  .get(addInBasket);
+
+router
+  .route('/basket')
+  .get(renderBasket);
+router
+  .route('/baskets/:id')
+  .delete(deleteFromBasket);
 
 module.exports = router;
