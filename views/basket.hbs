@@ -5,32 +5,27 @@
   <div class="favSmallContainer">
     <div class="favTable">
       <table>
-        <tr>
-          <td>Номер</td>
-          <td>Фото</td>
-          <td>Описание</td>
-          <td>Кол-во</td>
-          <td>Цена</td>
-          <td>Убрать из корзины</td>
+        {{#each findBasket }}
+        <tr class='js-basItem'>
+          {{!-- <td>Номер</td> --}}
+          <td><img class="small" src='image/Socks/{{this.basket_link}}'></td>
+         
+          <td id=4{{this.id}} class='js-count'>{{this.basket_size}}</td>
+          {{!-- <td>Цена</td> --}}
+          <td><button class='deletFromBasket1' id=3{{this.id}} >Убрать из корзины</button></td>
         </tr>
-        <tr>
-          <td>Номер</td>
-          <td>Фото</td>
-          <td>Описание</td>
-          <td>Кол-во</td>
-          <td>Цена</td>
-          <td>Убрать из корзины</td>
-        </tr>
+        {{/each}}
+        
       </table>
       <div>
-        <h4 id="total">Итого:{{price}}</h4>
+        <h4 class='js-total' id="total">Итого:{{reduc}} пар</h4>
       </div>
       <div class="favBtnContainer">
         <div class="">
-          <img class="btnOrder" src="/image/кнопкаОформитьзаказ.png" alt="">
+          {{!-- <img class="btnOrder" src="/image/кнопкаОформитьзаказ.png" alt=""> --}}
         </div>
         <div class="">
-          <img class="btnReg" src="/image/кнопкаЗарегистрироваться.png" alt="">
+          {{!-- <img class="btnReg" src="/image/кнопкаЗарегистрироваться.png" alt=""> --}}
         </div>
       
       </div>

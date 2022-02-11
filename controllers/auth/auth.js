@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+// const { where } = require('sequelize/types');
 const {
   User, Basket, Favorites, Order,
 } = require('../../db/models');
@@ -101,7 +102,84 @@ exports.renderFav = async (req, res) => {
   console.log(fav);
   res.render('fav', { fav });
 };
+exports.deletFromFav = async (req, res) => {
+  const deletId = req.params.id;
+  console.log(deletId);
+  const destroy = await Favorites.destroy({ where: { id: deletId } });
+  res.end();
+};
+exports.renderBasket = async (req, res) => {
+  const localsId = res.locals.useremail.id;
+  const findBasket = await Basket.findAll({ where: { user_id: localsId }, raw: true });
+  // console.log(findBasket);
+  const reduc = await findBasket.reduce((a, b) => a + b.basket_size, 0);
+  // console.log(reduc);
+  res.render('basket', { findBasket, reduc });
+};
 
+exports.addInBasket = async (req, res) => {
+  console.log(req.body);
+  const { linkPic } = req.body;
+  const { link } = req.body;
+  if (linkPic) {
+    const changeCount = await Basket.findOne({ where: { basket_link: linkPic } });
+    if (changeCount) {
+      changeCount.increment('basket_size', { by: 1 });
+      res.end();
+      // console.log('=>>>>', changeCount);
+    } else {
+      const findUser = await User.findOne({ where: { id: res.locals.useremail.id }, raw: true });
+
+      const addInBasket = await Basket.create({ basket_link: linkPic, user_id: findUser.id, basket_size: 1 });
+
+      res.end();
+    }
+  }
+  if (link) {
+    console.log(link);
+    const changeCount = await Basket.findOne({ where: { basket_link: link } });
+    if (changeCount) {
+      changeCount.increment('basket_size', { by: 1 });
+
+      res.end();
+      // console.log('=>>>>', changeCount);
+    } else {
+      const findUser = await User.findOne({ where: { id: res.locals.useremail.id }, raw: true });
+
+      const addInBasket = await Basket.create({ basket_link: link, user_id: findUser.id, basket_size: 1 });
+
+      res.end();
+    }
+  }
+};
+
+exports.deleteFromBasket = async (req, res) => {
+  try {
+    const delBasket = req.params.id;
+    const findBasd = await Basket.findOne({ where: { id: delBasket } });
+
+    if (findBasd.basket_size >= 2) {
+      await findBasd.increment('basket_size', { by: -1 });
+      const reduce1 = await Basket.findAll({ where: { user_id: res.locals.useremail.id } });
+      const reduc = await reduce1.reduce((a, b) => a + b.basket_size, 0);
+      res.json({
+        delete: false, count: findBasd.basket_size, reduce: reduc, id: findBasd.id,
+      });
+    } else {
+      const reduce2 = await Basket.findAll({ where: { user_id: res.locals.useremail.id } });
+      const reduc = await reduce2.reduce((a, b) => a + b.basket_size, 0);
+      const destroy1 = await Basket.destroy({ where: { id: delBasket } });
+      res.json({ delete: true, reduce: reduc, id: findBasd.id });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  // findBas.increment('basket_size', { by: 1 });
+
+  // const destroy = await Basket.destroy({ where: { id: delBasket } });
+  // res.end();
+};
 /**
  * Завершает запрос с ошибкой аутентификации
  * @param {object} res Ответ express

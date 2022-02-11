@@ -6,23 +6,28 @@
     <div class="favTable">
       <table >
         {{#each fav}}
-        <tr class='flextable'>
-          <td> {{this.id}}Номер</td>
-          <td><img class="small" src='image/Socks/{{this.favorites_link}}'>Фото</td>
-          <td>{{this.id}}Описание</td>
+        <tr class='flextable js-favItem'>
+          
+          <td><img class="small" src='image/Socks/{{this.favorites_link}}'></td>
+          <td>
+            <button class="deletFav" id={{this.id}}>удалить из избранного</button>
+          </td>
+          <td>
+            <button class="addFav" id=1{{this.id}}>добавить в корзину</button>
+          </td>
         </tr>
         {{/each}}
         
       </table>
       <div class="favBtnContainer">
         <div class="">
-          <img class="btnAddBasket" src="/image/кнопкаДобавитьВКорзину.png" alt="">
+         
         </div>
         <div class="">
-          <img class="btnShare" src="/image/кпонкаПоделиться.png" alt="">
+          
         </div>
         <div class="">
-          <img class="btnDeleteFromFav" src="/image/кнопка.убратьИзИзбранного.png" alt="">
+          
         </div>
 
 
