@@ -3,12 +3,17 @@
   padding: 0;
 } */
 .indexContainer {
-  position: absolute;
-  text-align: center;
-  width: 1150px;
+  display: flex;
+  flex-direction: column;
   height: 672px;
-  left: 145px;
-  top: 244px;
+  text-align: center;
+  margin-top: 200px;
+  align-items: center;
+  /* width: 1150px; */
+  /* position: absolute; */
+  /* justify-content: space-between; */
+  /* left: 145px;
+  top: 244px; */
 }
 
 #imgBaner {
