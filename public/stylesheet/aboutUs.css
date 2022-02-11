@@ -1,8 +1,18 @@
 .aboutUsContainer{
-  position: absolute;
+  /* position: absolute;
   justify-content: center;
   margin: 140px 140px auto;
-  width: 1150px;
+  width: 1150px; */
+
+
+  display: flex;
+  flex-direction: column;
+  /* height: 672px; */
+  text-align: center;
+  margin-top: 200px;
+  align-items: center;
+
+
 }
  #aboutUstext{
    margin-top: 40px;
@@ -15,10 +25,11 @@
   text-align: center;
  }
 
- #beforeAfter {
+ /* Не понял зачем это */
 
+ /* #beforeAfter {
   margin-left:20%;
- }
+ } */
 
  #firstReview{
    text-align: center;
@@ -51,3 +62,44 @@
  flex-direction: row;
  justify-content: space-between;
  }
+
+.about {
+  display: flex;
+  padding-top:50px;
+  justify-content: space-around;
+}
+ .yamap {
+ 
+  display: flex; /* флекс - дирекшен роу по умолчанию - горизонт*/
+  justify-content: space-around;
+  border:3px dotted rgb(57, 0, 228);
+  margin-right:20px;
+  height: 410px;
+  width: 400px;
+  /* margin:20px auto; */
+}
+
+#aboutUstext {
+  margin-left:20px;
+}
+
+
+.button {
+  display: flex; /* флекс - дирекшен роу по умолчанию - горизонт*/
+  justify-content: space-around;
+  align-items: center;
+}
+
+a.knopka {
+
+  color: black; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: white; /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  outline: none; /* убирать контур в Mozilla */
+  border:2px solid rgb(37, 14, 187);
+  border-radius: 8px;
+} 
+a.knopka:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
+a.knopka:active { background: rgb(152,15,0); } /* при нажатии */
